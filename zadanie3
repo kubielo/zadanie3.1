@@ -1,0 +1,41 @@
+#include <iostream>
+
+using namespace std;
+
+
+void eratostenes(int n)
+{
+    int tab[n + 1];
+    for (int i = 0; i < n + 1; i++)
+    {
+        tab[i] = 1;
+    }
+    for (int j = 2; j * j < n + 1; j++)
+    {
+        for (int k = j + 1; k < n + 1; k++)
+        {
+            if (k % j == 0)
+            {
+                tab[k] = 0;
+            }
+        }
+    }
+    for (int l = 0; l < n + 1; l++)
+    {
+        if (tab[l] == 1 && l!=0)
+        {
+            cout << l << " ";
+        }
+    }
+}
+int main()
+{
+    int n;
+
+    cout << "Podaj liczbe n: ";
+    cin >> n;
+
+    cout << "Liczby pierwsze z zakresu <2, " << n << ">: ";
+    eratostenes(n);
+    return 0;
+}
